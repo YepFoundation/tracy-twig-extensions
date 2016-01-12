@@ -4,6 +4,7 @@ namespace Yep\TracyTwigExtensions;
 use Tracy\Dumper;
 
 class DumpExtension extends \Twig_Extension {
+	protected $name = 'dump';
 	protected $options;
 
 	public function __construct(array $options = []) {
@@ -12,16 +13,16 @@ class DumpExtension extends \Twig_Extension {
 
 	public function getFunctions() {
 		return [
-			new \Twig_SimpleFunction('dump', [$this, 'dump'], ['is_safe' => ['html'], 'needs_context' => true, 'needs_environment' => true]),
+			new \Twig_SimpleFunction($this->name, [$this, 'dump'], ['is_safe' => ['html'], 'needs_context' => true, 'needs_environment' => true]),
 		];
 	}
 
 	public function getName() {
-		return 'dump';
+		return $this->name;
 	}
 
 	public function dump(\Twig_Environment $environment, $context) {
-		if (!$environment->isDebug() || !class_exists('\Tracy\Dumper')) {
+		if (!$environment->isDebug()) {
 			return '';
 		}
 
@@ -38,8 +39,16 @@ class DumpExtension extends \Twig_Extension {
 			$arguments = array_shift($arguments);
 		}
 
+		return $this->doDump($arguments);
+	}
+
+	protected function doDump($data) {
+		if (!class_exists('\Tracy\Dumper')) {
+			return '';
+		}
+
 		ob_start();
-		Dumper::dump($arguments, $this->options);
+		Dumper::dump($data, $this->options);
 
 		return ob_get_clean();
 	}
