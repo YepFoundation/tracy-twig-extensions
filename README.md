@@ -42,6 +42,10 @@ for `\Tracy\Dumper::dump`
 use Yep\TracyTwigExtensions\DumpExtension;
 $twig->addExtension(new DumpExtension());
 
+// If you want to see dump in colors, you must enable Tracy\Debugger
+// use Tracy\Debugger;
+// Debugger::enable(Debugger::DEVELOPMENT);
+
 // You can specify dump options
 $options = [
 	Tracy\Dumper::DEPTH => 5,
@@ -54,6 +58,9 @@ for `\Tracy\Debugger::barDump`
 ```php
 <?php
 use Yep\TracyTwigExtensions\BarDumpExtension;
+use Tracy\Debugger;
+
+Debugger::enable(Debugger::DEVELOPMENT);
 $twig->addExtension(new BarDumpExtension());
 
 // You can specify dump options
