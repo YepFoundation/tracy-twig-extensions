@@ -14,7 +14,7 @@ just add the dependency to your composer.json.
 ```json
 {
   "require" : {
-    "yep/tracy-twig-extensions": "dev-master"
+    "yep/tracy-twig-extensions": "1.*"
   }
 }
 ```
@@ -36,7 +36,7 @@ $twig = new Twig_Environment($loader, ['debug' => true]);
 
 ### Second, you must add extensions into Twig Environment.
 
-For \Tracy\Dumper::dump
+for `\Tracy\Dumper::dump`
 ```php
 <?php
 use Yep\TracyTwigExtensions\DumpExtension;
@@ -50,7 +50,7 @@ $options = [
 $twig->addExtension(new DumpExtension($options));
 ```
 
-For \Tracy\Debugger::barDump
+for `\Tracy\Debugger::barDump`
 ```php
 <?php
 use Yep\TracyTwigExtensions\BarDumpExtension;
