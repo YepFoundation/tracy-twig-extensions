@@ -21,7 +21,7 @@
  ],
  "require": {
   "php": ">=5.4.0",
-  "tracy/tracy": "2.3.*",
+  "tracy/tracy": "2.3.*|v2.4.0-RC1",
   "twig/twig": "~1.0"
  },
  "require-dev": {
