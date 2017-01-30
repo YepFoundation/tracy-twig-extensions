@@ -28,6 +28,11 @@
    "phpunit/phpunit": "^5.0",
    "yep/reflection": "^1.0"
  },
+  "config": {
+    "platform": {
+      "php": "5.6.0"
+    }
+  },
  "autoload": {
   "classmap": [
    "src/"
