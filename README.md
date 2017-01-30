@@ -14,7 +14,7 @@ just add the dependency to your composer.json.
 ```json
 {
   "require" : {
-    "yep/tracy-twig-extensions": "1.*"
+    "yep/tracy-twig-extensions": "^1.0"
   }
 }
 ```
